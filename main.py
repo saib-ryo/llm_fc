@@ -142,9 +142,9 @@ extract = client.chat.completions.create(
 info = json.loads(extract.choices[0].message.content)
 
 if not info.get("arrival_time"):
-    info["arrival_time"] = "初日 10:00"
+    info["arrival_time"] = "初日 14:00"  # デフォルト到着時刻
 if not info.get("departure_time"):
-    info["departure_time"] = "最終日 15:00"
+    info["departure_time"] = "最終日 12:00"  # デフォルト出発時刻
 
 print("抽出情報:", info)
 
@@ -220,7 +220,7 @@ followup = client.chat.completions.create(
                 "午前・午後・夜に分けて観光やアクティビティを提案してください。"
                 "夜はナイトライフや夜景に加えて、その土地の代表的な地元料理を日ごとに違うものを提案してください。"
                 "初日は到着時刻を考慮し、それ以前は活動を入れないでください。"
-                "最終日は出発時刻を考慮し、搭乗1時間前には空港チェックインを行う必要があるため、その時間を締め切りにしてください。"
+                "最終日は出発時刻を考慮し、搭乗1時間前には空港チェックインを行う必要があるため、その時間以降は活動を入れないでください。"
                 "宿泊ホテル情報がある場合、各日の最初に『ホテル出発』、最後に『ホテルに戻る』を必ず含めてください。"
                 "最後に全体の持ち物リストをまとめてください。"
             ),
